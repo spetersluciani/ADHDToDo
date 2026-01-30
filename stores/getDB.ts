@@ -7,7 +7,6 @@ export const getDB = async (dbname: string) => {
         try {
             db = await SQLite.openDatabaseAsync(dbname);
             console.log('Database opened successfully');
-            return db;
         } catch (error) {
             if (error) {
                 console.error(error);
@@ -16,4 +15,5 @@ export const getDB = async (dbname: string) => {
             }
         }
     }
+    return db;
 };

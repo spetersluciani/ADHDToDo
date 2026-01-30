@@ -6,8 +6,9 @@ export const initDB = async (dbname: string) => {
     if (db) {
         try {
             await db.execAsync(`
+                PRAGMA journal_mode = WAL;
                 CREATE TABLE IF NOT EXISTS TASKS (
-                    id TEXT PRIMARY KEY,
+                    id NUMBER PRIMARY KEY,
                     name TEXT NOT NULL,
                     duration TEXT,
                     frequency TEXT,
