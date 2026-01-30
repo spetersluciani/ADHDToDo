@@ -4,7 +4,7 @@ import { getDB } from "@/stores/getDB";
 
 // Create a new entry in the table
 export const createData = async (dbname: string, data: Task) => {
-    const db = await getDB();
+    const db = await getDB(dbname);
     let convertDataForDB = convertForDB(data);
 
     if (db && convertDataForDB) {
@@ -27,5 +27,6 @@ export const createData = async (dbname: string, data: Task) => {
         };
     } else {
         console.error('Error fetching database');
+        return false;
     }
 };

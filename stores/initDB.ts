@@ -1,7 +1,7 @@
 import { getDB } from "./getDB";
 
-export const initDB = async () => {
-    const db = await getDB();
+export const initDB = async (dbname: string) => {
+    const db = await getDB(dbname);
 
     if (db) {
         try {
@@ -16,19 +16,15 @@ export const initDB = async () => {
                     completed BOOLEAN DEFAULT FALSE
                 )
             `);
-
-            return true;
+            console.log('Database initialized successfully');
         } catch (error) {
             if (error) {
                 console.error(error);
             } else {
                 console.error('An error occurred initializing the database');
             }
-            
-            return false;
         }
     } else {
         console.error('Error fetching database');
-        return false;
     }
 }
